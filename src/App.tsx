@@ -17,7 +17,7 @@ function App() {
   }
 
   if (isCheckedSymbols) {
-    charset += '!@#$%&*()-';
+    charset += '!@#$%&*()-_^~[]{}<>/?';
   }
 
   function generatePassword() {

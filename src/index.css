@@ -47,6 +47,18 @@ body {
   font-size: 22px;
 }
 
+.container-checkbox {
+  color: #fff;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.container-checkbox span {
+  margin-right: 100px;
+}
+
 .sizePassword {
   color: #ec2020 !important;
 }

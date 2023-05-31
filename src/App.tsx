@@ -7,9 +7,18 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const [sizePassword, setSizePassword] = useState(5);
   const [password, setPassword] = useState('');
+  const [isCheckedNumbers, setIsCheckedNumbers] = useState(false);
+  const [isCheckedSymbols, setIsCheckedSymbols] = useState(false);
 
-  let charset =
-    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!';
+  let charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+  if (isCheckedNumbers) {
+    charset += '0123456789';
+  }
+
+  if (isCheckedSymbols) {
+    charset += '!@#$%&*()-';
+  }
 
   function generatePassword() {
     let newPass = '';
@@ -41,6 +50,26 @@ function App() {
           onChange={({ target }) => setSizePassword(Number(target.value))}
         />
 
+        <div className="container-checkbox">
+          <span>Incluir</span>
+          <input
+            type="checkbox"
+            name="checkboxList"
+            value="numeros"
+            checked={isCheckedNumbers}
+            onChange={() => setIsCheckedNumbers(!isCheckedNumbers)}
+          />{' '}
+          Números
+          <input
+            type="checkbox"
+            name="checkboxList"
+            value="simbolos"
+            checked={isCheckedSymbols}
+            onChange={() => setIsCheckedSymbols(!isCheckedSymbols)}
+          />{' '}
+          Símbolos
+        </div>
+
         <button type="button" className="button" onClick={generatePassword}>
           Gerar Senha
         </button>
@@ -53,6 +82,7 @@ function App() {
           <span className="tooltip">Clique na senha para copiar 👆</span>
         </div>
       )}
+
       <ToastContainer theme="dark" />
     </div>
   );

@@ -4,7 +4,7 @@
 
 <div align="center">
   <img src="./docs/assets/image1.PNG" width="500" heigth="500">
-  <img src="./docs/assets/image2.png" width="500" heigth="500">
+  <img src="./docs/assets/image2.PNG" width="500" heigth="500">
 </div>
 
 Aplicação para geração de senhas.

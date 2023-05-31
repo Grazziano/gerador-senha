@@ -8,7 +8,8 @@ function App() {
   const [sizePassword, setSizePassword] = useState(5);
   const [password, setPassword] = useState('');
 
-  let charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!';
+  let charset =
+    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!';
 
   function generatePassword() {
     let newPass = '';
@@ -28,7 +29,8 @@ function App() {
       <img className="logo" src={logo} alt="logo" />
       <main className="container-input">
         <span>
-          Tamanho <span>{sizePassword}</span> caracteres
+          Tamanho <span className="sizePassword">{sizePassword}</span>{' '}
+          caracteres
         </span>
         <input
           className="slider"
@@ -48,7 +50,7 @@ function App() {
         <div className="container-password" onClick={copyPassword}>
           <span className="title">Sua senha é:</span>
           <span className="password">{password}</span>
-          <span className="tooltip">Clique na senha para copiar</span>
+          <span className="tooltip">Clique na senha para copiar 👆</span>
         </div>
       )}
       <ToastContainer theme="dark" />

@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import logo from './assets/logo.png';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [sizePassword, setSizePassword] = useState(5);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <img className="logo" src={logo} alt="logo" />
+      <main className="container-input">
+        <span>
+          Tamanho <span>{sizePassword}</span> caracteres
+        </span>
+        <input
+          className="slider"
+          type="range"
+          min={5}
+          max={25}
+          value={sizePassword}
+          onChange={({ target }) => setSizePassword(Number(target.value))}
+        />
+        <button type="button" className="button">
+          Gerar Senha
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      </main>
+      <div className="container-password hide">
+        <span className="title">Sua senha é:</span>
+        <span className="password">123123</span>
+        <span className="tooltip">Clique na senha para copiar</span>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

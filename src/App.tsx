@@ -3,9 +3,24 @@ import logo from './assets/logo.png';
 
 function App() {
   const [sizePassword, setSizePassword] = useState(5);
+  const [password, setPassword] = useState('');
+
+  const list = 'abcdefghijlmnopqrstuvxz';
+
+  function generatePassword() {
+    let newPass = '';
+    for (let index = 0; index < sizePassword; index++) {
+      newPass += list.charAt(Math.floor(Math.random() * list.length));
+    }
+    setPassword(newPass);
+  }
+
+  function copyPassword() {
+    console.log('copiado');
+  }
 
   return (
-    <>
+    <div className="container">
       <img className="logo" src={logo} alt="logo" />
       <main className="container-input">
         <span>
@@ -19,16 +34,19 @@ function App() {
           value={sizePassword}
           onChange={({ target }) => setSizePassword(Number(target.value))}
         />
-        <button type="button" className="button">
+        <button type="button" className="button" onClick={generatePassword}>
           Gerar Senha
         </button>
       </main>
-      <div className="container-password hide">
-        <span className="title">Sua senha é:</span>
-        <span className="password">123123</span>
-        <span className="tooltip">Clique na senha para copiar</span>
-      </div>
-    </>
+
+      {password && (
+        <div className="container-password" onClick={copyPassword}>
+          <span className="title">Sua senha é:</span>
+          <span className="password">{password}</span>
+          <span className="tooltip">Clique na senha para copiar</span>
+        </div>
+      )}
+    </div>
   );
 }
 

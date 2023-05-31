@@ -1,22 +1,26 @@
 import { useState } from 'react';
 import logo from './assets/logo.png';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   const [sizePassword, setSizePassword] = useState(5);
   const [password, setPassword] = useState('');
 
-  const list = 'abcdefghijlmnopqrstuvxz';
+  let charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!';
 
   function generatePassword() {
     let newPass = '';
     for (let index = 0; index < sizePassword; index++) {
-      newPass += list.charAt(Math.floor(Math.random() * list.length));
+      newPass += charset.charAt(Math.floor(Math.random() * charset.length));
     }
     setPassword(newPass);
   }
 
   function copyPassword() {
-    console.log('copiado');
+    navigator.clipboard.writeText(password);
+    toast.success('Senha copiada!');
   }
 
   return (
@@ -34,6 +38,7 @@ function App() {
           value={sizePassword}
           onChange={({ target }) => setSizePassword(Number(target.value))}
         />
+
         <button type="button" className="button" onClick={generatePassword}>
           Gerar Senha
         </button>
@@ -46,6 +51,7 @@ function App() {
           <span className="tooltip">Clique na senha para copiar</span>
         </div>
       )}
+      <ToastContainer theme="dark" />
     </div>
   );
 }
